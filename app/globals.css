@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green: #173d26;
+  --teal: #5aa6b4;
+  --lime: #babc00;
+  --gold: #f7cb3a;
+  --coral: #f76f34;
+  --pink: #ea6c93;
+  --cream: #fffdf7;
+  --soft: #f8f4ea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--green);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--green);
+}
+
+.image-card {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(247, 203, 58, 0.55), transparent 28%),
+    radial-gradient(circle at 85% 18%, rgba(90, 166, 180, 0.42), transparent 28%),
+    radial-gradient(circle at 65% 72%, rgba(247, 111, 52, 0.35), transparent 34%),
+    linear-gradient(135deg, #fff7df, #fdfaf2);
+}
+
+.flower-mark {
+  position: absolute;
+  width: 145px;
+  height: 145px;
+  border: 1px solid rgba(234, 108, 147, 0.24);
+  border-radius: 999px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.flower-mark::before,
+.flower-mark::after {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(247, 111, 52, 0.18);
+  border-radius: 999px;
+}
+
+.flower-mark::after {
+  inset: 46px;
+  border-color: rgba(247, 203, 58, 0.35);
+}
+
+.tropical-line {
+  background: linear-gradient(
+    90deg,
+    var(--teal),
+    var(--gold),
+    var(--coral),
+    var(--pink)
+  );
+}
