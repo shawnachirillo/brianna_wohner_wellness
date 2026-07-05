@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CoachingPage() {
   return (
@@ -6,16 +7,29 @@ export default function CoachingPage() {
       <Header />
 
       <section className="px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mt-16 grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="font-script text-5xl text-brand-coral">
-                Modern Goddess Reset
-              </p>
+  <div className="mx-auto max-w-7xl">
+    <div className="mt-16 grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="relative">
+        <Image
+          src="/images/WLWB pink flower 3.png"
+          alt="Pink Flower"
+          width={650}
+          height={650}
+          aria-hidden="true"
+          className="pointer-events-none 
+          absolute left-48 
+          top-60 opacity-[0.14] 
+          select-none
+          transform -scale-x-100"
+        />
 
-              <h1 className="mt-4 font-serifDisplay text-5xl leading-tight md:text-7xl">
-                12 Week 1:1 Weight Loss Coaching Program
-              </h1>
+        <p className="relative font-script text-5xl text-brand-coral">
+          Modern Goddess Reset
+        </p>
+
+        <h1 className="relative mt-4 font-serifDisplay text-5xl leading-tight md:text-7xl">
+          12 Week 1:1 Weight Loss Coaching Program
+        </h1>
 
               <p className="mt-8 text-xl leading-9 text-brand-green/75">
                 This is where everything changes.
