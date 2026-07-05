@@ -60,9 +60,15 @@ function Header() {
 function Hero() {
   return (
     <section className="relative overflow-hidden px-6 py-20 md:py-28">
-      <div className="flower-mark -left-16 top-24 hidden md:block" />
-      <div className="flower-mark -right-12 bottom-16 hidden md:block" />
-
+     
+      <Image
+  src="/images/pink_flower_1.png"
+  alt="pink flower"
+  width={500}
+  height={500}
+  aria-hidden="true"
+  className="pointer-events-none absolute -left-32 top-10 opacity-[0.25]"
+/>
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
         <div>
           <p className="font-script text-4xl text-brand-coral md:text-5xl">
@@ -143,41 +149,59 @@ function ServicesBar() {
 
 function FeaturedProgram() {
   return (
-    <section id="coaching" className="px-6 py-28">
+    <section id="coaching" className="relative overflow-hidden px-6 py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-20 lg:grid-cols-2">
-      <div className="relative">
 
-<div className="overflow-hidden rounded-[42px] bg-brand-soft p-6 shadow-soft">
+        {/* LEFT IMAGE */}
+        <div className="relative">
+          <div className="overflow-hidden rounded-[42px] bg-brand-soft p-6 shadow-soft">
+            <div className="relative h-[620px] overflow-hidden rounded-[34px]">
+              <Image
+                src="/images/BW_portrait_pepper.png"
+                alt="Brianna Wohner"
+                fill
+                priority
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
+        </div>
 
-  <div className="relative h-[620px] overflow-hidden rounded-[34px]">
+        {/* RIGHT COPY */}
+        <div className="relative">
 
-    <Image
-      src="/images/BW_portrait_pepper.png"
-      alt="Brianna Wohner"
-      fill
-      priority
-      className="object-cover object-center"
-    />
-</div>
-  </div>
+          <Image
+            src="/images/WLWB pink flower 3.png"
+            alt="Pink Flower"
+            width={500}
+            height={500}
+            aria-hidden="true"
+            className="
+pointer-events-none
+absolute
+left-64
+top-40
+opacity-[0.12]
+            transform -scale-x-100
+            "
+            
+          />
 
-</div>
-        <div>
-          <p className="font-script text-5xl text-brand-coral">
+          <p className="relative font-script text-5xl text-brand-coral">
             Signature Program
           </p>
 
-          <h2 className="mt-4 font-serifDisplay text-5xl leading-tight md:text-6xl">
+          <h2 className="relative mt-4 font-serifDisplay text-5xl leading-tight md:text-6xl">
             Modern Goddess Coaching
           </h2>
 
-          <p className="mt-8 text-lg leading-9 text-brand-green/75">
-            This isn&apos;t another diet. It&apos;s a coaching experience that
-            combines yoga, nutrition, mindfulness, and compassionate
-            accountability so you finally feel at home in your body.
+          <p className="relative mt-8 text-lg leading-9 text-brand-green/75">
+            This isn't another diet. It's a coaching experience that combines
+            yoga, nutrition, mindfulness, and compassionate accountability so
+            you finally feel at home in your body.
           </p>
 
-          <ul className="mt-10 space-y-5 text-lg text-brand-green/80">
+          <ul className="relative mt-10 space-y-5 text-lg text-brand-green/80">
             <li>✓ Weekly coaching</li>
             <li>✓ Nutrition guidance</li>
             <li>✓ Yoga practice</li>
@@ -186,17 +210,17 @@ function FeaturedProgram() {
           </ul>
 
           <Link
-            href="/coaching" 
-            className="mt-12 inline-flex rounded-full bg-brand-green px-10 py-4 font-semibold uppercase tracking-[0.15em] text-white hover:bg-brand-coral"
+            href="/coaching"
+            className="mt-12 inline-flex rounded-full bg-brand-green px-10 py-4 font-semibold uppercase tracking-[0.15em] text-white transition hover:bg-brand-coral"
           >
             Learn More
           </Link>
         </div>
+
       </div>
     </section>
   );
 }
-
 function Pillars() {
   return (
     <section className="px-6 py-24">
