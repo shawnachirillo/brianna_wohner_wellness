@@ -2,15 +2,58 @@ import Link from "next/link";
 import Image from "next/image";
 
 const pillars = [
-  ["Nourish", "Simple nutrition support rooted in real life, not restriction."],
-  ["Move", "Yoga and movement that strengthens your body while calming your mind."],
-  ["Transform", "Coaching that builds habits, confidence, and inner steadiness."],
+  ["MINDSET", "Break the all-or-nothing cycle. Build a relationship with food and your body that doesn't require perfection to work."],
+  ["NUTRITION", "No calorie counting. No restriction. Real food strategies that fit your real life and include dessert."],
+  ["MOVEMENT", "Find movement you actually enjoy. Yoga, strength, cardio. Whatever keeps you showing up consistently, for life."],
+  ["ACCOUNTABILITY", "Weekly calls, daily app access, and a coach who genuinely celebrates every win, big and small, with you"],
 ];
 
-const quotes = [
-  "Brianna helped me stop starting over every Monday.",
-  "I finally learned how to care for my body without shame.",
-  "Her coaching feels warm, direct, and deeply supportive.",
+const testimonials = [
+  {
+    title: "I lost 80 pounds, 20 pounds more than my goal weight!",
+    text: "I lost 80 pounds over COVID with Bri’s coaching. She is compassionate but also keeps you accountable. I wouldn’t have been able to achieve this goal for myself without her guidance. I’m so grateful for her help.",
+    name: "Jessica, Client",
+  },
+  {
+    title: "So much clarity!",
+    text: "Bri and I went on a grocery shopping tour. It gave me so much clarity and confidence to go shopping on my own.",
+    name: "Leslie, Client",
+  },
+  {
+    title: "I can bake and not binge!",
+    text: "I love baking. Working with Bri has taught me that I can love baking and not overindulge on my own creations. I now give them away to friends and they love my baking too!",
+    name: "Tamara, Client",
+  },
+  {
+    title: "Now I have a better relationship with food!",
+    text: "I’ve always had a horrible relationship with food and my body. Bri has taught me to see food as fuel and how to add movement into my daily routine. I love the replays when I can’t make live classes.",
+    name: "Audrey, Client and Reset Studio Member",
+  },
+  {
+    title: "No more leg pain!",
+    text: "Before working with Brianna I was dealing with constant pain. Brianna makes our classes just what I need to manage my chronic pain. I can also feel circulation in my legs again!",
+    name: "Riviera, Yoga Student",
+  },
+  {
+    title: "We feel like we did when we got married!",
+    text: "My wife and I ate healthy in our youth and then when we had kids we kind of fell off. When we worked with Bri, I lost over 25 pounds and my wife hit her goal. We gained time back with each other by making workouts a family activity.",
+    name: "Ty, Client",
+  },
+  {
+    title: "She’s so motivational and fun!",
+    text: "I took the 6 week challenge with Bri. I loved the daily accountability texts. She’s so motivational and I was really inspired to finish the challenge strong.",
+    name: "Deanna, Client",
+  },
+  {
+    title: "Now I actually exercise!",
+    text: "Working with Bri helped me to include exercise into my day and I now think differently about the foods I eat.",
+    name: "Whitney, Client",
+  },
+  {
+    title: "I hit my goal and maintained!",
+    text: "Bri helped me hit my goal and I stayed on with her for maintenance coaching to help in that first year after the weight loss. My daughter got married within that time and Bri helped me stay on track so I looked and felt fabulous in my MOB dress. She is amazing and super encouraging.",
+    name: "Michelle, Client",
+  },
 ];
 
 export default function Home() {
@@ -23,7 +66,7 @@ export default function Home() {
       <Pillars />
       <QuoteBreak />
       <About />
-      <Yoga />
+      {/* <Yoga /> */}
       <Testimonials />
       <CTA />
       <Footer />
@@ -42,13 +85,13 @@ function Header() {
         <div className="hidden gap-8 text-sm font-semibold uppercase tracking-[0.18em] md:flex">
           <Link href="#about">About</Link>
           <Link href="/coaching">Coaching</Link>
-          <Link href="#yoga">Yoga</Link>
+          {/* <Link href="#yoga">Yoga</Link> */}
           <Link href="#testimonials">Praise</Link>
         </div>
 
         <Link
           href="#contact"
-          className="rounded-full bg-brand-green px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-brand-coral md:text-sm"
+          className="rounded-full bg-brand-pink px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-brand-coral md:text-sm"
         >
           Book a Call
         </Link>
@@ -87,14 +130,14 @@ function Hero() {
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <Link
               href="#contact"
-              className="rounded-full bg-brand-coral px-8 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-white hover:bg-brand-green"
+              className="rounded-full bg-brand-coral px-8 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-white hover:bg-brand-pink"
             >
               Start Your Journey
             </Link>
 
             <Link
               href="/coaching"
-              className="rounded-full border border-brand-green px-8 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] hover:bg-brand-green hover:text-white"
+              className="rounded-full border border-brand-coral px-8 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] hover:bg-brand-pink hover:text-white"
             >
               Explore Coaching
             </Link>
@@ -204,14 +247,14 @@ opacity-[0.12]
           <ul className="relative mt-10 space-y-5 text-lg text-brand-green/80">
             <li>✓ Weekly coaching</li>
             <li>✓ Nutrition guidance</li>
-            <li>✓ Yoga practice</li>
+            {/* <li>✓ Yoga practice</li> */}
             <li>✓ Sustainable habits</li>
             <li>✓ Accountability</li>
           </ul>
 
           <Link
             href="/coaching"
-            className="mt-12 inline-flex rounded-full bg-brand-green px-10 py-4 font-semibold uppercase tracking-[0.15em] text-white transition hover:bg-brand-coral"
+            className="mt-12 inline-flex rounded-full bg-brand-coral px-10 py-4 font-semibold uppercase tracking-[0.15em] text-white transition hover:bg-brand-pink"
           >
             Learn More
           </Link>
@@ -226,13 +269,13 @@ function Pillars() {
     <section className="px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-script text-4xl text-brand-pink">The Method</p>
+          <p className="font-script text-4xl text-brand-pink">Our 4 Pillars</p>
           <h2 className="mt-3 font-serifDisplay text-5xl leading-tight">
             A softer, smarter path to sustainable wellness.
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
           {pillars.map(([title, text], index) => (
             <article
               key={title}
@@ -291,8 +334,8 @@ function About() {
           </p>
 
           <Link
-            href="#contact"
-            className="mt-10 inline-flex rounded-full border border-brand-green px-8 py-4 font-semibold uppercase tracking-[0.18em] hover:bg-brand-green hover:text-white"
+            href="/about"
+            className="mt-10 inline-flex rounded-full bg-brand-coral px-8 py-4 font-semibold uppercase tracking-[0.18em] hover:bg-brand-pink hover:text-white"
           >
             Read My Story
           </Link>
@@ -315,65 +358,71 @@ function About() {
   );
 }
 
-function Yoga() {
-  return (
-    <section id="yoga" className="bg-brand-cream px-6 py-28">
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <p className="font-script text-5xl text-brand-coral">Practice</p>
+// function Yoga() {
+//   return (
+//     <section id="yoga" className="bg-brand-cream px-6 py-28">
+//       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+//         <div>
+//           <p className="font-script text-5xl text-brand-coral">Practice</p>
 
-          <h2 className="mt-4 font-serifDisplay text-5xl leading-tight md:text-6xl">
-            Yoga for real bodies and real lives.
-          </h2>
+//           <h2 className="mt-4 font-serifDisplay text-5xl leading-tight md:text-6xl">
+//             Yoga for real bodies and real lives.
+//           </h2>
 
-          <p className="mt-6 text-lg leading-8 text-brand-green/75">
-            Gentle, grounding movement designed to help women build strength,
-            release tension, and reconnect with their bodies.
-          </p>
-        </div>
+//           <p className="mt-6 text-lg leading-8 text-brand-green/75">
+//             Gentle, grounding movement designed to help women build strength,
+//             release tension, and reconnect with their bodies.
+//           </p>
+//         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          {["On-demand yoga", "Private sessions", "Group classes", "Wellness events"].map(
-            (item) => (
-              <div
-                key={item}
-                className="rounded-[28px] border border-brand-green/15 bg-white p-8 font-semibold shadow-sm"
-              >
-                <div className="mb-8 h-1 w-16 bg-brand-gold" />
-                <p className="font-serifDisplay text-3xl">{item}</p>
-              </div>
-            )
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div className="grid gap-5 sm:grid-cols-2">
+//           {["On-demand yoga", "Private sessions", "Group classes", "Wellness events"].map(
+//             (item) => (
+//               <div
+//                 key={item}
+//                 className="rounded-[28px] border border-brand-green/15 bg-white p-8 font-semibold shadow-sm"
+//               >
+//                 <div className="mb-8 h-1 w-16 bg-brand-gold" />
+//                 <p className="font-serifDisplay text-3xl">{item}</p>
+//               </div>
+//             )
+//           )}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 function Testimonials() {
   return (
     <section id="testimonials" className="bg-brand-soft px-6 py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <p className="font-script text-5xl text-brand-pink">Kind Words</p>
+
           <h2 className="mt-4 font-serifDisplay text-5xl leading-tight">
-            Women come for wellness. They stay because they feel seen.
+            Real women. Real lives. Real results.
           </h2>
         </div>
 
-        <div className="mt-20 grid gap-8 lg:grid-cols-3">
-          {quotes.map((quote) => (
-            <div key={quote} className="rounded-[30px] bg-white p-10 shadow-soft">
-              <div className="mb-8 h-1 w-20 bg-brand-gold" />
+        <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <article
+              key={testimonial.title}
+              className="bg-white p-8 shadow-soft"
+            >
+              <h3 className="font-serifDisplay text-3xl leading-tight text-brand-coral">
+                {testimonial.title}
+              </h3>
 
-              <p className="font-serifDisplay text-3xl leading-snug">
-                “{quote}”
+              <p className="mt-6 leading-8 text-brand-green/75">
+                {testimonial.text}
               </p>
 
-              <p className="mt-8 text-sm uppercase tracking-[0.2em] text-brand-green/50">
-                Client
+              <p className="mt-8 text-xs font-bold uppercase tracking-[0.28em] text-brand-green/50">
+                {testimonial.name}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </div>

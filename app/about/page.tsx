@@ -224,13 +224,13 @@ function Header() {
         <div className="hidden gap-8 text-sm font-semibold uppercase tracking-[0.18em] md:flex">
           <Link href="/about">About</Link>
           <Link href="/coaching">Coaching</Link>
-          <Link href="/#yoga">Yoga</Link>
+          {/* <Link href="/#yoga">Yoga</Link> */}
           <Link href="/#testimonials">Praise</Link>
         </div>
 
         <Link
           href="/coaching"
-          className="rounded-full bg-brand-green px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-brand-coral md:text-sm"
+          className="rounded-full bg-brand-coral px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-brand-pink md:text-sm"
         >
           Book a Call
         </Link>
