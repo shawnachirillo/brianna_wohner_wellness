@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const pillars = [
   ["Nourish", "Simple nutrition support rooted in real life, not restriction."],
@@ -40,7 +41,7 @@ function Header() {
 
         <div className="hidden gap-8 text-sm font-semibold uppercase tracking-[0.18em] md:flex">
           <Link href="#about">About</Link>
-          <Link href="#coaching">Coaching</Link>
+          <Link href="/coaching">Coaching</Link>
           <Link href="#yoga">Yoga</Link>
           <Link href="#testimonials">Praise</Link>
         </div>
@@ -86,7 +87,7 @@ function Hero() {
             </Link>
 
             <Link
-              href="#coaching"
+              href="/coaching"
               className="rounded-full border border-brand-green px-8 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] hover:bg-brand-green hover:text-white"
             >
               Explore Coaching
@@ -94,13 +95,33 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-[2.5rem] bg-brand-soft p-6 shadow-soft">
-          <div className="image-card flex min-h-[520px] items-end rounded-[2rem] p-8">
-            <h2 className="max-w-sm font-serifDisplay text-4xl leading-tight">
-              Morning energy. Grounded body. Clear mind.
-            </h2>
-          </div>
-        </div>
+        <div className="relative">
+
+<div className="overflow-hidden rounded-[42px] bg-brand-soft p-6 shadow-soft">
+
+  <div className="relative h-[620px] overflow-hidden rounded-[34px]">
+
+    <Image
+      src="/images/BW_headshot.png"
+      alt="Brianna Wohner"
+      fill
+      priority
+      className="object-cover object-center"
+    />
+
+  </div>
+
+</div>
+
+<div className="absolute -bottom-10 -left-10 rounded-full bg-white px-8 py-6 shadow-soft">
+
+  <p className="font-script text-3xl text-brand-coral">
+    Yoga + Nutrition
+  </p>
+
+</div>
+
+</div>
       </div>
     </section>
   );
@@ -124,8 +145,23 @@ function FeaturedProgram() {
   return (
     <section id="coaching" className="px-6 py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-20 lg:grid-cols-2">
-        <div className="image-card h-[620px] rounded-[42px] shadow-soft" />
+      <div className="relative">
 
+<div className="overflow-hidden rounded-[42px] bg-brand-soft p-6 shadow-soft">
+
+  <div className="relative h-[620px] overflow-hidden rounded-[34px]">
+
+    <Image
+      src="/images/BW_portrait_pepper.png"
+      alt="Brianna Wohner"
+      fill
+      priority
+      className="object-cover object-center"
+    />
+</div>
+  </div>
+
+</div>
         <div>
           <p className="font-script text-5xl text-brand-coral">
             Signature Program
@@ -150,7 +186,7 @@ function FeaturedProgram() {
           </ul>
 
           <Link
-            href="#contact"
+            href="/coaching" 
             className="mt-12 inline-flex rounded-full bg-brand-green px-10 py-4 font-semibold uppercase tracking-[0.15em] text-white hover:bg-brand-coral"
           >
             Learn More
