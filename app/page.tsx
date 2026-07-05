@@ -298,7 +298,18 @@ function About() {
           </Link>
         </div>
 
-        <div className="image-card h-[700px] rounded-[42px] shadow-soft" />
+        <div className="relative overflow-hidden rounded-[42px] bg-brand-soft shadow-soft">
+  <div className="relative h-[650px]">
+    <Image
+      src="/images/blue_portrait.png"
+      alt="Brianna Wohner"
+      fill
+      priority
+      className="object-cover object-center"
+    />
+  </div>
+</div>
+        
       </div>
     </section>
   );
