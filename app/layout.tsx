@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Noto_Serif_Display, Open_Sans, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+
 const notoSerifDisplay = Noto_Serif_Display({
   subsets: ["latin"],
   variable: "--font-noto-serif-display",
@@ -35,7 +38,9 @@ export default function RootLayout({
       <body
         className={`${notoSerifDisplay.variable} ${openSans.variable} ${dancingScript.variable} font-sans`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

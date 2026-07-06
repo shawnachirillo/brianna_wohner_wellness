@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white text-brand-green">
-      <Header />
-
       <section className="relative overflow-hidden px-6 py-24 md:py-32">
         <Image
           src="/images/WLWB pink flower 3.png"
@@ -234,7 +233,9 @@ function Header() {
         >
           Book a Call
         </Link>
+        
       </nav>
     </header>
+    
   );
 }
