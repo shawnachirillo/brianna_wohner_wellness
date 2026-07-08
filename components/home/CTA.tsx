@@ -15,11 +15,18 @@ export default function CTA() {
           </h2>
   
           <Link
-            href="mailto:hello@example.com"
-            className="mt-9 inline-flex rounded-full bg-brand-coral px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white hover:bg-brand-gold hover:text-brand-green"
-          >
-            Book a Discovery Call
-          </Link>
+  href="#mailto:info@briannawohner.com"
+  className="
+    mt-10 inline-block rounded-full bg-brand-coral px-8 py-4
+    text-sm font-bold uppercase tracking-[0.16em] text-white
+    transition-all duration-300 ease-out
+    hover:-translate-y-4 hover:scale-[1.04] hover:bg-brand-pink
+    active:translate-y-[2px] active:scale-[0.97]
+    [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]
+  "
+>
+  Apply for Coaching
+</Link>
         </div>
       </section>
     );

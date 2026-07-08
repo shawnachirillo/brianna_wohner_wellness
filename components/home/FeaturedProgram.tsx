@@ -64,11 +64,18 @@ export default function FeaturedProgram() {
             </ul>
   
             <Link
-              href="/coaching"
-              className="mt-12 inline-flex rounded-full bg-brand-coral px-10 py-4 font-semibold uppercase tracking-[0.15em] text-white transition hover:bg-brand-pink"
-            >
-              Learn More
-            </Link>
+  href="#apply"
+  className="
+    mt-10 inline-block rounded-full bg-brand-coral px-8 py-4
+    text-sm font-bold uppercase tracking-[0.16em] text-white
+    transition-all duration-300 ease-out
+    hover:-translate-y-4 hover:scale-[1.04] hover:bg-brand-pink
+    active:translate-y-[2px] active:scale-[0.97]
+    [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]
+  "
+>
+  Learn More
+</Link>
           </div>
   
         </div>

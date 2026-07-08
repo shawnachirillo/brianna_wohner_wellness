@@ -1,45 +1,41 @@
 import Link from "next/link";
 import Image from "next/image";
 
-
 export default function CoachingPage() {
   return (
     <main className="min-h-screen bg-white text-brand-green">
       <section className="px-6 py-24">
-  <div className="mx-auto max-w-7xl">
-    <div className="mt-16 grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
-      <div className="relative">
-        <Image
-          src="/images/WLWB pink flower 3.png"
-          alt="Pink Flower"
-          width={650}
-          height={650}
-          aria-hidden="true"
-          className="pointer-events-none 
-          absolute left-48 
-          top-60 opacity-[0.14] 
-          select-none
-          transform -scale-x-100"
-        />
+        <div className="mx-auto max-w-7xl">
+          <div className="mt-16 grid items-center gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+            {/* LEFT SIDE */}
+            <div className="relative">
+              <Image
+                src="/images/WLWB pink flower 3.png"
+                alt=""
+                width={650}
+                height={650}
+                aria-hidden="true"
+                className="pointer-events-none absolute left-48 top-60 -scale-x-100 opacity-[0.14] select-none"
+              />
 
-        <p className="relative font-script text-5xl text-brand-coral">
-          Modern Goddess Reset
-        </p>
+              <p className="relative font-script text-5xl text-brand-coral">
+                Modern Goddess Reset
+              </p>
 
-        <h1 className="relative mt-4 font-serifDisplay text-5xl leading-tight md:text-7xl">
-          12 Week 1:1 Weight Loss Coaching Program
-        </h1>
+              <h1 className="relative mt-4 font-serifDisplay text-5xl leading-tight md:text-7xl">
+                12 Week 1:1 Weight Loss Coaching Program
+              </h1>
 
-              <p className="mt-8 text-xl leading-9 text-brand-green/75">
+              <p className="relative mt-8 text-xl leading-9 text-brand-green/75">
                 This is where everything changes.
               </p>
 
-              <p className="mt-6 text-lg leading-8 text-brand-green/75">
+              <p className="relative mt-6 text-lg leading-8 text-brand-green/75">
                 In 12 weeks, we build your foundation: mindset, nutrition,
                 movement, and the daily habits that will carry you for life.
               </p>
 
-              <div className="mt-10 grid gap-3 text-lg font-semibold">
+              <div className="relative mt-10 grid gap-3 text-lg font-semibold">
                 <p>Real support.</p>
                 <p>Real results.</p>
                 <p>Real mom life.</p>
@@ -47,19 +43,21 @@ export default function CoachingPage() {
 
               <Link
                 href="#apply"
-                className="mt-10 inline-flex rounded-full bg-brand-coral px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white hover:bg-brand-green"
+                className="mt-10 inline-block rounded-full bg-brand-coral px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 ease-out hover:-translate-y-4 hover:scale-[1.04] hover:bg-brand-pink active:translate-y-[2px] active:scale-[0.97] [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]"
               >
                 Apply for Coaching
               </Link>
             </div>
 
+            {/* RIGHT SIDE VIDEO */}
             <div className="rounded-[42px] bg-brand-soft p-5 shadow-soft">
-              <div className="aspect-video overflow-hidden rounded-[32px]">
+              <div className="mx-auto max-w-sm overflow-hidden rounded-[32px]">
                 <iframe
-                  className="h-full w-full"
-                  src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID"
-                  title="What it is like to work with a weight loss coach"
+                  className="aspect-[9/16] w-full"
+                  src="https://www.youtube.com/embed/rPnRR0W10xc"
+                  title="What it's like to work with a weight loss coach"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                 />
               </div>
@@ -141,8 +139,8 @@ export default function CoachingPage() {
           </p>
 
           <Link
-            href="mailto:hello@example.com"
-            className="mt-10 inline-flex rounded-full bg-brand-green px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white hover:bg-brand-coral"
+            href="mailto:info@briannawohner.com"
+            className="mt-10 inline-block rounded-full bg-brand-coral px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 ease-out hover:-translate-y-4 hover:scale-[1.04] hover:bg-brand-pink active:translate-y-[2px] active:scale-[0.97] [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]"
           >
             Apply Now
           </Link>
@@ -151,4 +149,3 @@ export default function CoachingPage() {
     </main>
   );
 }
-
