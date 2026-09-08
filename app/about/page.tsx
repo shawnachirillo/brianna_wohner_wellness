@@ -20,7 +20,7 @@ export default function AboutPage() {
             <div className="relative h-[720px]">
               <Image
                 src="/images/side_portrait.png"
-                alt="Brianna Wohner"
+                alt="The Goddess Reset"
                 fill
                 priority
                 className="object-cover object-center"
@@ -225,7 +225,7 @@ function Header() {
           href="/"
           className="font-serifDisplay text-lg tracking-[0.22em] md:text-xl"
         >
-          BRIANNA WOHNER
+          The Goddess Reset
         </Link>
 
         <div className="hidden gap-8 text-sm font-semibold uppercase tracking-[0.18em] md:flex">

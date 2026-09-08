@@ -39,7 +39,7 @@ export default function AboutPreview() {
     <div className="relative h-[650px]">
       <Image
         src="/images/blue_portrait.png"
-        alt="Brianna Wohner"
+        alt="The Goddess Reset"
         fill
         priority
         className="object-cover object-center"

@@ -24,7 +24,7 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Brianna Wohner Wellness",
+  title: "The Goddess Reset",
   description: "Yoga, nutrition, and wellness coaching.",
 };
 
