@@ -1,4 +1,5 @@
 {
   "name": "test",
-  "description": "test"
+  "description": "test",
+  "buttonText": "Try now!"
 }
