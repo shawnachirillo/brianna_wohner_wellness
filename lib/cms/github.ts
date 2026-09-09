@@ -32,9 +32,26 @@ async function createGitHubAppJwt() {
     .sign(key);
 }
 
-export async function getGitHubInstallationToken() {
-  const installationId = getRequiredEnv("GITHUB_INSTALLATION_ID");
+type CachedInstallationToken = {
+  token: string;
+  expiresAt: number;
+};
 
+let cachedInstallationToken: CachedInstallationToken | null = null;
+
+export async function getGitHubInstallationToken() {
+  const now = Date.now();
+
+  // Reuse the existing GitHub installation token until
+  // five minutes before GitHub says it expires.
+  if (
+    cachedInstallationToken &&
+    cachedInstallationToken.expiresAt - now > 5 * 60 * 1000
+  ) {
+    return cachedInstallationToken.token;
+  }
+
+  const installationId = getRequiredEnv("GITHUB_INSTALLATION_ID");
   const jwt = await createGitHubAppJwt();
 
   const response = await fetch(
@@ -60,7 +77,18 @@ export async function getGitHubInstallationToken() {
 
   const data = await response.json();
 
-  return data.token as string;
+  if (!data.token || !data.expires_at) {
+    throw new Error(
+      "GitHub did not return a valid installation token."
+    );
+  }
+
+  cachedInstallationToken = {
+    token: data.token,
+    expiresAt: new Date(data.expires_at).getTime(),
+  };
+
+  return cachedInstallationToken.token;
 }
 
 export async function testGitHubRepositoryAccess() {
