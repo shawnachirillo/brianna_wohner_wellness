@@ -1,71 +1,4 @@
 {
-  "hero": {
-    "eyebrow": "Modern Goddess Coaching",
-    "heading": "Wellness that feels like coming home to yourself.",
-    "subheading": "Yoga, nutrition, and compassionate coaching for women ready to feel strong, nourished, and present in their own lives.",
-    "image": "/images/BW_headshot.png",
-    "imageAlt": "Brianna Wohner",
-    "primaryButtonText": "Start Your Journey",
-    "primaryButtonLink": "#contact",
-    "secondaryButtonText": "Explore Coaching",
-    "secondaryButtonLink": "/coaching"
-  },
-
-  "services": [
-    "Nutrition Coaching",
-    "Weight Loss",
-    "Women's Wellness",
-    "Virtual Sessions"
-  ],
-
-  "featuredOfferings": {
-    "eyebrow": "Featured Offerings",
-    "heading": "Wellness support that meets you where you are.",
-    "description": "Choose the experience that fits your season, from community-centered movement to personalized one-on-one support.",
-    "items": [
-      {
-        "title": "Pop-Up Wellness Studio",
-        "description": "A restorative wellness experience that brings movement, mindfulness, and community together in an inviting space.",
-        "image": "/images/side_portrait.png",
-        "imageAlt": "Brianna Wohner leading a wellness experience",
-        "href": "https://thrivecart.com/placeholder-popup-wellness-studio",
-        "buttonText": "Reserve Your Spot"
-      },
-      {
-        "title": "Group Yoga",
-        "description": "Grounding, supportive yoga sessions designed to help you build strength, release tension, and reconnect with your body.",
-        "image": "/images/BW_portrait_pepper.png",
-        "imageAlt": "Brianna Wohner wellness and yoga coaching",
-        "href": "https://thrivecart.com/placeholder-group-yoga",
-        "buttonText": "Reserve Your Spot"
-      },
-      {
-        "title": "Private Yoga",
-        "description": "One-on-one sessions shaped around your body, your goals, and the kind of support you need right now.",
-        "image": "/images/blue_portrait.png",
-        "imageAlt": "Brianna Wohner private wellness coaching",
-        "href": "https://thrivecart.com/placeholder-private-yoga",
-        "buttonText": "Reserve Your Spot"
-      }
-    ]
-  },
-
-  "featuredProgram": {
-    "eyebrow": "Signature Program",
-    "heading": "Modern Goddess Coaching",
-    "description": "This isn't another diet. It's a coaching experience that combines yoga, nutrition, mindfulness, and compassionate accountability so you finally feel at home in your body.",
-    "image": "/images/BW_portrait_pepper.png",
-    "imageAlt": "Brianna Wohner",
-    "bullets": [
-      "Weekly coaching",
-      "Nutrition guidance",
-      "Sustainable habits",
-      "Accountability"
-    ],
-    "buttonText": "Learn More",
-    "buttonLink": "#apply"
-  },
-
   "pillars": {
     "eyebrow": "Our 4 Pillars",
     "heading": "A softer, smarter path to sustainable wellness.",
@@ -88,22 +21,12 @@
       }
     ]
   },
-
-  "quote": {
-    "text": "True wellness isn't about becoming someone else. It's remembering who you've always been.",
-    "author": "Brianna Wohner"
+  "cta": {
+    "eyebrow": "Ready?",
+    "heading": "Begin your next chapter feeling nourished, strong, and supported.",
+    "buttonText": "Apply for Coaching",
+    "buttonLink": "mailto:info@briannawohner.com"
   },
-
-  "aboutPreview": {
-    "eyebrow": "Meet Brianna",
-    "heading": "Helping women reconnect with themselves.",
-    "description": "After years of helping women transform their health, Brianna learned that sustainable wellness isn't created through perfection. It's created through compassion, movement, nutrition, and mindset.",
-    "image": "/images/blue_portrait.png",
-    "imageAlt": "The Goddess Reset",
-    "buttonText": "Read My Story",
-    "buttonLink": "/about"
-  },
-
   "testimonials": {
     "eyebrow": "Kind Words",
     "heading": "Real women. Real lives. Real results.",
@@ -155,11 +78,80 @@
       }
     ]
   },
-
-  "cta": {
-    "eyebrow": "Ready?",
-    "heading": "Begin your next chapter feeling nourished, strong, and supported.",
-    "buttonText": "Apply for Coaching",
-    "buttonLink": "mailto:info@briannawohner.com"
+  "featuredProgram": {
+    "eyebrow": "Signature Program",
+    "heading": "Modern Goddess Coaching",
+    "description": "This isn't another diet. It's a coaching experience that combines yoga, nutrition, mindfulness, and compassionate accountability so you finally feel at home in your body.",
+    "image": "/images/BW_portrait_pepper.png",
+    "imageAlt": "Brianna Wohner",
+    "bullets": [
+      "Weekly coaching",
+      "Nutrition guidance",
+      "Sustainable habits",
+      "Accountability"
+    ],
+    "buttonText": "Learn More",
+    "buttonLink": "#apply"
+  },
+  "hero": {
+    "secondaryButtonLink": "/coaching",
+    "primaryButtonText": "Start Your Journey",
+    "heading": "Wellness that feels like coming home to yourself. TEST",
+    "subheading": "Yoga, nutrition, and compassionate coaching for women ready to feel strong, nourished, and present in their own lives.",
+    "eyebrow": "Modern Goddess Coaching",
+    "primaryButtonLink": "#contact",
+    "imageAlt": "Brianna Wohner",
+    "secondaryButtonText": "Explore Coaching",
+    "image": "/images/BW_headshot.png"
+  },
+  "aboutPreview": {
+    "eyebrow": "Meet Brianna",
+    "heading": "Helping women reconnect with themselves.",
+    "description": "After years of helping women transform their health, Brianna learned that sustainable wellness isn't created through perfection. It's created through compassion, movement, nutrition, and mindset.",
+    "image": "/images/blue_portrait.png",
+    "imageAlt": "The Goddess Reset",
+    "buttonText": "Read My Story",
+    "buttonLink": "/about"
+  },
+  "quote": {
+    "text": "True wellness isn't about becoming someone else. It's remembering who you've always been.",
+    "author": "Brianna Wohner"
+  },
+  "services": [
+    "Nutrition Coaching",
+    "Weight Loss",
+    "Women's Wellness",
+    "Virtual Sessions"
+  ],
+  "featuredOfferings": {
+    "eyebrow": "Featured Offerings",
+    "heading": "Wellness support that meets you where you are.",
+    "description": "Choose the experience that fits your season, from community-centered movement to personalized one-on-one support.",
+    "items": [
+      {
+        "title": "Pop-Up Wellness Studio",
+        "description": "A restorative wellness experience that brings movement, mindfulness, and community together in an inviting space.",
+        "image": "/images/side_portrait.png",
+        "imageAlt": "Brianna Wohner leading a wellness experience",
+        "href": "https://thrivecart.com/placeholder-popup-wellness-studio",
+        "buttonText": "Reserve Your Spot"
+      },
+      {
+        "title": "Group Yoga",
+        "description": "Grounding, supportive yoga sessions designed to help you build strength, release tension, and reconnect with your body.",
+        "image": "/images/BW_portrait_pepper.png",
+        "imageAlt": "Brianna Wohner wellness and yoga coaching",
+        "href": "https://thrivecart.com/placeholder-group-yoga",
+        "buttonText": "Reserve Your Spot"
+      },
+      {
+        "title": "Private Yoga",
+        "description": "One-on-one sessions shaped around your body, your goals, and the kind of support you need right now.",
+        "image": "/images/blue_portrait.png",
+        "imageAlt": "Brianna Wohner private wellness coaching",
+        "href": "https://thrivecart.com/placeholder-private-yoga",
+        "buttonText": "Reserve Your Spot"
+      }
+    ]
   }
 }
