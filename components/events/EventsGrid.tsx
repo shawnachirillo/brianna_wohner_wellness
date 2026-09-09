@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,38 +12,48 @@ type EventItem = {
   description: string;
   image: string;
   href: string;
+  gallery?: string[];
   isPublished: boolean;
 };
 
-const events: EventItem[] = [
-  {
-    id: "1",
-    title: "Women’s Wellness Workshop",
-    date: "September 26, 2026",
-    time: "1:00 PM – 3:00 PM",
-    location: "Milwaukee, WI",
-    description:
-      "An intentional afternoon centered on sustainable wellness, nourishment, and reconnecting with yourself.",
-    image: "/images/side_portrait.png",
-    href: "#",
-    isPublished: true,
-  },
-  {
-    id: "2",
-    title: "Sunday Reset",
-    date: "October 4, 2026",
-    time: "10:00 AM – 11:30 AM",
-    location: "Milwaukee, WI",
-    description:
-      "A slower Sunday experience focused on movement, breath, reflection, and resetting for the week ahead.",
-    image: "/images/blue_portrait.png",
-    href: "#",
-    isPublished: true,
-  },
-];
+function getEvents(): EventItem[] {
+  const eventsDir = path.join(process.cwd(), "content", "events");
+
+  if (!fs.existsSync(eventsDir)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(eventsDir)
+    .filter((file) => file.endsWith(".json"))
+    .map((file) => {
+      const filePath = path.join(eventsDir, file);
+      const contents = fs.readFileSync(filePath, "utf8");
+
+      return JSON.parse(contents) as EventItem;
+    });
+}
+
+function formatEventDate(dateString: string) {
+  const date = new Date(`${dateString}T12:00:00`);
+
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 
 export default function EventsGrid() {
-  const publishedEvents = events.filter((event) => event.isPublished);
+  const events = getEvents();
+
+  const publishedEvents = events
+    .filter((event) => event.isPublished)
+    .sort(
+      (a, b) =>
+        new Date(a.date).getTime() -
+        new Date(b.date).getTime()
+    );
 
   return (
     <section className="bg-brand-soft px-6 py-24 md:py-28">
@@ -96,7 +108,7 @@ export default function EventsGrid() {
                     backdrop-blur-sm
                   "
                 >
-                  {event.date}
+                  {formatEventDate(event.date)}
                 </div>
               </div>
 
@@ -136,6 +148,7 @@ export default function EventsGrid() {
                     "
                   >
                     View Event
+
                     <span className="transition-transform duration-300 group-hover:translate-x-1">
                       →
                     </span>

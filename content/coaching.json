@@ -1,0 +1,44 @@
+{
+  "hero": {
+    "eyebrow": "Modern Goddess Reset",
+    "heading": "12 Week 1:1 Weight Loss Coaching Program",
+    "intro": "This is where everything changes.",
+    "description": "In 12 weeks, we build your foundation: mindset, nutrition, movement, and the daily habits that will carry you for life.",
+    "highlights": [
+      "Real support.",
+      "Real results.",
+      "Real mom life."
+    ],
+    "buttonText": "Apply for Coaching",
+    "buttonLink": "#apply",
+    "videoUrl": "https://www.youtube.com/embed/rPnRR0W10xc",
+    "videoTitle": "What it's like to work with a weight loss coach"
+  },
+  "included": {
+    "eyebrow": "What's Included",
+    "heading": "Everything you need to stop starting over.",
+    "items": [
+      "Weekly 1:1 Zoom calls with focused coaching every single week",
+      "Daily coach access via my custom app, Monday through Saturday",
+      "Weekly digital check-ins for accountability and pattern tracking",
+      "3 private yoga or fitness sessions tailored to your body",
+      "Full Yoga Studio membership included free — $19/month value",
+      "2 post-program maintenance sessions included"
+    ]
+  },
+  "realFix": {
+    "eyebrow": "The Real Fix",
+    "heading": "You've tried quick fixes. Now it's time for the real fix.",
+    "paragraphs": [
+      "This program is for the woman who needs structure, support, and a plan that works with real life — not against it.",
+      "Together, we focus on the habits underneath the results: nourishment, movement, mindset, consistency, and compassion."
+    ]
+  },
+  "cta": {
+    "eyebrow": "Ready to reset?",
+    "heading": "One that lasts.",
+    "description": "Apply for Modern Goddess Reset and begin building the foundation that carries you beyond the next 12 weeks.",
+    "buttonText": "Apply Now",
+    "buttonLink": "mailto:info@briannawohner.com"
+  }
+}

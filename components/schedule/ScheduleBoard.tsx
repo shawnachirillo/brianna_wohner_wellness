@@ -1,8 +1,37 @@
+import fs from "fs";
+import path from "path";
 import Link from "next/link";
-import {
-  scheduleEvents,
-  type ScheduleEvent,
-} from "@/data/schedule";
+
+type ScheduleEvent = {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  startTime: string;
+  endTime?: string;
+  location?: string;
+  description?: string;
+  thrivecartUrl: string;
+  isPublished: boolean;
+};
+
+function getScheduleEvents(): ScheduleEvent[] {
+  const scheduleDir = path.join(process.cwd(), "content", "schedule");
+
+  if (!fs.existsSync(scheduleDir)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(scheduleDir)
+    .filter((file) => file.endsWith(".json"))
+    .map((file) => {
+      const filePath = path.join(scheduleDir, file);
+      const fileContents = fs.readFileSync(filePath, "utf8");
+
+      return JSON.parse(fileContents) as ScheduleEvent;
+    });
+}
 
 function formatDate(dateString: string) {
   const date = new Date(`${dateString}T12:00:00`);
@@ -53,7 +82,6 @@ function EventRow({ event }: { event: ScheduleEvent }) {
         md:px-8
       "
     >
-      {/* DATE */}
       <div className="flex items-center gap-4 md:block md:text-center">
         <div
           className="
@@ -83,7 +111,6 @@ function EventRow({ event }: { event: ScheduleEvent }) {
         </p>
       </div>
 
-      {/* EVENT INFO */}
       <div>
         <span
           className="
@@ -117,7 +144,6 @@ function EventRow({ event }: { event: ScheduleEvent }) {
         )}
       </div>
 
-      {/* TIME / LOCATION */}
       <div className="text-sm leading-6">
         <p className="font-semibold text-brand-green">
           {event.startTime}
@@ -131,7 +157,6 @@ function EventRow({ event }: { event: ScheduleEvent }) {
         )}
       </div>
 
-      {/* CTA */}
       <div className="flex md:justify-end">
         <span
           className="
@@ -148,6 +173,7 @@ function EventRow({ event }: { event: ScheduleEvent }) {
           "
         >
           Reserve Spot
+
           <span
             className="
               transition-transform duration-300
@@ -163,6 +189,8 @@ function EventRow({ event }: { event: ScheduleEvent }) {
 }
 
 export default function ScheduleBoard() {
+  const scheduleEvents = getScheduleEvents();
+
   const publishedEvents = scheduleEvents
     .filter((event) => event.isPublished)
     .sort(
@@ -173,7 +201,6 @@ export default function ScheduleBoard() {
 
   return (
     <section className="relative overflow-hidden bg-brand-soft px-4 py-20 md:px-6 md:py-28">
-      {/* Decorative circles */}
       <div
         className="
           pointer-events-none
@@ -195,7 +222,6 @@ export default function ScheduleBoard() {
       />
 
       <div className="relative mx-auto max-w-7xl">
-        {/* HEADER */}
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-script text-4xl text-brand-pink md:text-5xl">
             Find Your Moment
@@ -211,7 +237,6 @@ export default function ScheduleBoard() {
           </p>
         </div>
 
-        {/* SCHEDULE */}
         <div
           className="
             mt-14
@@ -222,7 +247,6 @@ export default function ScheduleBoard() {
             shadow-soft
           "
         >
-          {/* DESKTOP HEADER */}
           <div
             className="
               hidden

@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "eyebrow": "Hi, I'm Bri",
+    "heading": "Your new wellness bestie.",
+    "intro": "I know what it feels like to be stuck. I've been exactly where you are.",
+    "paragraphs": [
+      "Battling depression, anxiety, a sugar addiction I couldn't shake, and a body I didn't recognize. I tried everything and nothing worked. Until I stopped dieting and started building a life I actually loved living in.",
+      "I lost 52 pounds, 4 dress sizes, and gained confidence I never knew I had. And I've kept it off for over 15 years. Not through restriction, but through the exact method I now teach."
+    ],
+    "image": "/images/side_portrait.png",
+    "imageAlt": "The Goddess Reset"
+  },
+
+  "transformation": {
+    "eyebrow": "My Transformation",
+    "heading": "I never ask women to go somewhere I've never been.",
+    "description": "I know what it's like to feel uncomfortable in your body. These photos remind me why this work matters.",
+    "beforeImages": [
+      {
+        "image": "/images/before_1.jpg",
+        "alt": "Before transformation"
+      },
+      {
+        "image": "/images/before_2.jpg",
+        "alt": "Before transformation"
+      }
+    ],
+    "afterImage": {
+      "image": "/images/after.png",
+      "alt": "After transformation"
+    },
+    "resultEyebrow": "52 pounds.",
+    "resultHeading": "More importantly...",
+    "resultText": "I gained confidence, peace, freedom around food, and a life I genuinely love living."
+  },
+
+  "method": {
+    "eyebrow": "The Modern Goddess Method",
+    "heading": "I built this because I needed it to exist.",
+    "description": "I'm not a coach who just read a book. I'm a coach who lived it as a mom, a wife, a business owner, with a full life and real responsibilities. Now it's here for you."
+  },
+
+  "finalSection": {
+    "eyebrow": "No more quick-fix lies.",
+    "heading": "Natural weight loss without restriction, shame, or starting over every Monday.",
+    "paragraphs": [
+      "I'm here to disrupt the health industry with no drugs, no fad diets, no quick-fix lies.",
+      "I help ambitious women lose weight naturally and reclaim their energy, without calorie counting, restriction, or starting over every Monday. Dessert included!",
+      "My passion is empowering women to love themselves deeply through mindset coaching and nourishing food."
+    ],
+    "buttonText": "Work With Me",
+    "buttonLink": "/coaching"
+  }
+}

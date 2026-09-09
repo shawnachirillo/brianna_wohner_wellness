@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import about from "@/content/about.json";
 
 export default function AboutPage() {
   return (
@@ -19,8 +19,8 @@ export default function AboutPage() {
           <div className="relative overflow-hidden rounded-[42px] bg-brand-soft shadow-soft">
             <div className="relative h-[720px]">
               <Image
-                src="/images/side_portrait.png"
-                alt="The Goddess Reset"
+                src={about.hero.image}
+                alt={about.hero.imageAlt}
                 fill
                 priority
                 className="object-cover object-center"
@@ -30,138 +30,104 @@ export default function AboutPage() {
 
           <div className="relative">
             <p className="font-script text-5xl text-brand-coral">
-              Hi, I'm Bri
+              {about.hero.eyebrow}
             </p>
 
             <h1 className="mt-4 font-serifDisplay text-5xl leading-tight md:text-7xl">
-              Your new wellness bestie.
+              {about.hero.heading}
             </h1>
 
             <p className="mt-8 text-xl leading-9 text-brand-green/75">
-              I know what it feels like to be stuck. I&apos;ve been exactly
-              where you are.
+              {about.hero.intro}
             </p>
 
             <div className="mt-8 space-y-6 text-lg leading-9 text-brand-green/75">
-              <p>
-                Battling depression, anxiety, a sugar addiction I couldn&apos;t
-                shake, and a body I didn&apos;t recognize. I tried everything
-                and nothing worked. Until I stopped dieting and started
-                building a life I actually loved living in.
-              </p>
-
-              <p>
-                I lost 52 pounds, 4 dress sizes, and gained confidence I never
-                knew I had. And I&apos;ve kept it off for over 15 years. Not
-                through restriction, but through the exact method I now teach.
-              </p>
+              {about.hero.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
       <section className="bg-brand-soft px-6 py-28">
-  <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-center font-script text-5xl text-brand-coral">
+            {about.transformation.eyebrow}
+          </p>
 
-    <p className="text-center font-script text-5xl text-brand-coral">
-      My Transformation
-    </p>
+          <h2 className="mt-4 text-center font-serifDisplay text-5xl leading-tight">
+            {about.transformation.heading}
+          </h2>
 
-    <h2 className="mt-4 text-center font-serifDisplay text-5xl leading-tight">
-      I never ask women to go somewhere I've never been.
-    </h2>
+          <p className="mx-auto mt-8 max-w-3xl text-center text-lg leading-9 text-brand-green/75">
+            {about.transformation.description}
+          </p>
 
-    <p className="mx-auto mt-8 max-w-3xl text-center text-lg leading-9 text-brand-green/75">
-      I know what it's like to feel uncomfortable in your body. These photos
-      remind me why this work matters.
-    </p>
+          <div className="mt-20 grid gap-10 lg:grid-cols-[0.8fr_0.8fr_1.2fr]">
+            {about.transformation.beforeImages.map((item, index) => (
+              <div key={`${item.image}-${index}`}>
+                <p className="mb-5 text-center text-sm font-bold uppercase tracking-[0.2em] text-brand-coral">
+                  Before
+                </p>
 
-    <div className="mt-20 grid gap-10 lg:grid-cols-[0.8fr_0.8fr_1.2fr]">
+                <div className="overflow-hidden rounded-[32px] bg-white shadow-soft">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    width={500}
+                    height={700}
+                    className="w-full object-cover"
+                  />
+                </div>
+              </div>
+            ))}
 
-      {/* Before 1 */}
-      <div>
-        <p className="mb-5 text-center text-sm font-bold uppercase tracking-[0.2em] text-brand-coral">
-          Before
-        </p>
+            <div>
+              <p className="mb-5 text-center text-sm font-bold uppercase tracking-[0.2em] text-brand-green">
+                After
+              </p>
 
-        <div className="overflow-hidden rounded-[32px] bg-white shadow-soft">
-          <Image
-            src="/images/before_1.jpg"
-            alt="Before transformation"
-            width={500}
-            height={700}
-            className="w-full object-cover"
-          />
+              <div className="overflow-hidden rounded-[40px] bg-white shadow-soft">
+                <Image
+                  src={about.transformation.afterImage.image}
+                  alt={about.transformation.afterImage.alt}
+                  width={700}
+                  height={900}
+                  className="w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-20 max-w-4xl text-center">
+            <p className="font-script text-5xl text-brand-pink">
+              {about.transformation.resultEyebrow}
+            </p>
+
+            <h3 className="mt-4 font-serifDisplay text-4xl leading-tight">
+              {about.transformation.resultHeading}
+            </h3>
+
+            <p className="mx-auto mt-8 max-w-2xl text-xl leading-9 text-brand-green/75">
+              {about.transformation.resultText}
+            </p>
+          </div>
         </div>
-      </div>
-
-      {/* Before 2 */}
-      <div>
-        <p className="mb-5 text-center text-sm font-bold uppercase tracking-[0.2em] text-brand-coral">
-          Before
-        </p>
-
-        <div className="overflow-hidden rounded-[32px] bg-white shadow-soft">
-          <Image
-            src="/images/before_2.jpg"
-            alt="Before transformation"
-            width={500}
-            height={700}
-            className="w-full object-cover"
-          />
-        </div>
-      </div>
-
-      {/* After */}
-      <div>
-        <p className="mb-5 text-center text-sm font-bold uppercase tracking-[0.2em] text-brand-green">
-          After
-        </p>
-
-        <div className="overflow-hidden rounded-[40px] bg-white shadow-soft">
-          <Image
-            src="/images/after.png"
-            alt="After transformation"
-            width={700}
-            height={900}
-            className="w-full object-cover"
-          />
-        </div>
-      </div>
-
-    </div>
-    <div className="mx-auto mt-20 max-w-4xl text-center">
-
-<p className="font-script text-5xl text-brand-pink">
-  52 pounds.
-</p>
-
-<h3 className="mt-4 font-serifDisplay text-4xl leading-tight">
-  More importantly...
-</h3>
-
-<p className="mx-auto mt-8 max-w-2xl text-xl leading-9 text-brand-green/75">
-  I gained confidence, peace, freedom around food, and a life I genuinely
-  love living.
-</p>
-
-</div>
-  </div>
-</section>
+      </section>
 
       <section className="bg-brand-green px-6 py-24 text-white">
         <div className="mx-auto max-w-5xl text-center">
           <p className="font-script text-5xl text-brand-gold">
-            The Modern Goddess Method
+            {about.method.eyebrow}
           </p>
 
           <h2 className="mt-4 font-serifDisplay text-5xl leading-tight">
-            I built this because I needed it to exist.
+            {about.method.heading}
           </h2>
 
           <p className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-white/80">
-            I&apos;m not a coach who just read a book. I&apos;m a coach who
-            lived it as a mom, a wife, a business owner, with a full life and
-            real responsibilities. Now it&apos;s here for you.
+            {about.method.description}
           </p>
         </div>
       </section>
@@ -170,80 +136,35 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
           <div>
             <p className="font-script text-5xl text-brand-pink">
-              No more quick-fix lies.
+              {about.finalSection.eyebrow}
             </p>
 
             <h2 className="mt-4 font-serifDisplay text-5xl leading-tight md:text-6xl">
-              Natural weight loss without restriction, shame, or starting over
-              every Monday.
+              {about.finalSection.heading}
             </h2>
           </div>
 
           <div className="space-y-6 text-lg leading-9 text-brand-green/75">
-            <p>
-              I&apos;m here to disrupt the health industry with no drugs, no fad
-              diets, no quick-fix lies.
-            </p>
+            {about.finalSection.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
 
-            <p>
-              I help ambitious women lose weight naturally and reclaim their
-              energy, without calorie counting, restriction, or starting over
-              every Monday. Dessert included!
-            </p>
-
-            <p>
-              My passion is empowering women to love themselves deeply through
-              mindset coaching and nourishing food.
-            </p>
-
-        
             <Link
-  href="/coaching"
-  className="
-    mt-10 inline-block rounded-full bg-brand-coral px-8 py-4
-    text-sm font-bold uppercase tracking-[0.16em] text-brand-green
-    transition-all duration-300 ease-out
-    hover:-translate-y-4 hover:scale-[1.04] hover:bg-brand-pink
-    active:translate-y-[2px] active:scale-[0.97]
-    [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]
-  "
->
-  Work With Me
-</Link>
+              href={about.finalSection.buttonLink}
+              className="
+                mt-10 inline-block rounded-full bg-brand-coral px-8 py-4
+                text-sm font-bold uppercase tracking-[0.16em] text-brand-green
+                transition-all duration-300 ease-out
+                hover:-translate-y-4 hover:scale-[1.04] hover:bg-brand-pink
+                active:translate-y-[2px] active:scale-[0.97]
+                [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]
+              "
+            >
+              {about.finalSection.buttonText}
+            </Link>
           </div>
         </div>
       </section>
     </main>
-  );
-}
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-brand-green/10 bg-white/90 backdrop-blur">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Link
-          href="/"
-          className="font-serifDisplay text-lg tracking-[0.22em] md:text-xl"
-        >
-          The Goddess Reset
-        </Link>
-
-        <div className="hidden gap-8 text-sm font-semibold uppercase tracking-[0.18em] md:flex">
-          <Link href="/about">About</Link>
-          <Link href="/coaching">Coaching</Link>
-          {/* <Link href="/#yoga">Yoga</Link> */}
-          <Link href="/#testimonials">Praise</Link>
-        </div>
-
-        <Link
-          href="/coaching"
-          className="rounded-full bg-brand-coral px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-brand-pink md:text-sm"
-        >
-          Book a Call
-        </Link>
-        
-      </nav>
-    </header>
-    
   );
 }

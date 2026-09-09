@@ -1,0 +1,330 @@
+backend:
+  name: github
+  repo: shawnachirillo/brianna_wohner_wellness
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+local_backend: true
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "content/home.json"
+        format: "json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "text" }
+              - { label: "Hero Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string" }
+              - { label: "Primary Button Link", name: "primaryButtonLink", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string" }
+              - { label: "Secondary Button Link", name: "secondaryButtonLink", widget: "string" }
+
+          - label: "Services Bar"
+            name: "services"
+            widget: "list"
+            field:
+              { label: "Service", name: "service", widget: "string" }
+
+          - label: "Featured Offerings"
+            name: "featuredOfferings"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+              - label: "Offerings"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+                  - { label: "Purchase Link", name: "href", widget: "string" }
+                  - { label: "Button Text", name: "buttonText", widget: "string" }
+
+          - label: "Signature Program"
+            name: "featuredProgram"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+
+              - label: "Bullet Points"
+                name: "bullets"
+                widget: "list"
+                field:
+                  { label: "Bullet", name: "bullet", widget: "string" }
+
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button Link", name: "buttonLink", widget: "string" }
+
+          - label: "Pillars"
+            name: "pillars"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+
+              - label: "Pillars"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "text", widget: "text" }
+
+          - label: "Quote"
+            name: "quote"
+            widget: "object"
+            fields:
+              - { label: "Quote", name: "text", widget: "text" }
+              - { label: "Author", name: "author", widget: "string" }
+
+          - label: "About Preview"
+            name: "aboutPreview"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button Link", name: "buttonLink", widget: "string" }
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+
+              - label: "Testimonials"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Testimonial", name: "text", widget: "text" }
+                  - { label: "Name", name: "name", widget: "string" }
+
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button Link", name: "buttonLink", widget: "string" }
+
+      - name: "about"
+        label: "About Page"
+        file: "content/about.json"
+        format: "json"
+        fields:
+          - label: "About Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+
+              - label: "Story Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field:
+                  { label: "Paragraph", name: "paragraph", widget: "text" }
+
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+
+          - label: "Transformation"
+            name: "transformation"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+              - label: "Before Photos"
+                name: "beforeImages"
+                widget: "list"
+                fields:
+                  - { label: "Photo", name: "image", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "After Photo"
+                name: "afterImage"
+                widget: "object"
+                fields:
+                  - { label: "Photo", name: "image", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - { label: "Result Eyebrow", name: "resultEyebrow", widget: "string" }
+              - { label: "Result Heading", name: "resultHeading", widget: "string" }
+              - { label: "Result Text", name: "resultText", widget: "text" }
+
+          - label: "Modern Goddess Method"
+            name: "method"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Final Section"
+            name: "finalSection"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field:
+                  { label: "Paragraph", name: "paragraph", widget: "text" }
+
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button Link", name: "buttonLink", widget: "string" }
+
+      - name: "coaching"
+        label: "Coaching Page"
+        file: "content/coaching.json"
+        format: "json"
+        fields:
+          - label: "Coaching Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Program Name", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+              - label: "Highlights"
+                name: "highlights"
+                widget: "list"
+                field:
+                  { label: "Highlight", name: "highlight", widget: "string" }
+
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button Link", name: "buttonLink", widget: "string" }
+              - { label: "YouTube Embed URL", name: "videoUrl", widget: "string" }
+              - { label: "Video Title", name: "videoTitle", widget: "string" }
+
+          - label: "What's Included"
+            name: "included"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+
+              - label: "Included Items"
+                name: "items"
+                widget: "list"
+                field:
+                  { label: "Item", name: "item", widget: "string" }
+
+          - label: "The Real Fix"
+            name: "realFix"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field:
+                  { label: "Paragraph", name: "paragraph", widget: "text" }
+
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button Link", name: "buttonLink", widget: "string" }
+
+  - name: "offerings"
+    label: "Offerings"
+    folder: "content/offerings"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Price", name: "price", widget: "string", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+      - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+
+  - name: "schedule"
+    label: "Schedule"
+    folder: "content/schedule"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Start Time", name: "startTime", widget: "string" }
+      - { label: "End Time", name: "endTime", widget: "string", required: false }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Registration / ThriveCart Link", name: "thrivecartUrl", widget: "string", default: "#" }
+      - { label: "Published", name: "isPublished", widget: "boolean", default: true }
+
+  - name: "events"
+    label: "Events"
+    folder: "content/events"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    summary: "{{date}} — {{title}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string" }
+      - { label: "Event Name", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Time", name: "time", widget: "string", required: false }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Purchase / Registration Link", name: "href", widget: "string", default: "#" }
+      - { label: "Published", name: "isPublished", widget: "boolean", default: true }
+
+      - label: "Gallery"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field:
+          { label: "Photo", name: "photo", widget: "image" }
