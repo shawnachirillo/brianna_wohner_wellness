@@ -4,5 +4,6 @@
   "price": "",
   "image": "/images/BW_portrait_pepper.png",
   "buttonText": "Reserve Your Spot",
-  "buttonLink": "https://thrivecart.com/placeholder-group-yoga"
+  "buttonLink": "https://thrivecart.com/placeholder-group-yoga",
+  "order": 2
 }

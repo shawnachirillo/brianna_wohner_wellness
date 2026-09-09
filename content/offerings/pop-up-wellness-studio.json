@@ -4,5 +4,6 @@
   "price": "",
   "image": "/images/side_portrait.png",
   "buttonText": "Reserve Your Spot",
-  "buttonLink": "https://thrivecart.com/placeholder-popup-wellness-studio"
+  "buttonLink": "https://thrivecart.com/placeholder-popup-wellness-studio",
+  "order": 1
 }

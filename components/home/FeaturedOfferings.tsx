@@ -1,6 +1,18 @@
+import fs from "fs";
+import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import home from "@/content/home.json";
+
+type Offering = {
+  name: string;
+  description: string;
+  price?: string;
+  image?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  order?: number;
+};
 
 const accents = [
   "bg-brand-gold",
@@ -8,8 +20,30 @@ const accents = [
   "bg-brand-coral",
 ];
 
+function getOfferings(): Offering[] {
+  const offeringsDirectory = path.join(
+    process.cwd(),
+    "content",
+    "offerings"
+  );
+
+  const files = fs
+    .readdirSync(offeringsDirectory)
+    .filter((file) => file.endsWith(".json"));
+
+  return files
+    .map((file) => {
+      const filePath = path.join(offeringsDirectory, file);
+      const fileContents = fs.readFileSync(filePath, "utf8");
+
+      return JSON.parse(fileContents) as Offering;
+    })
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+}
+
 export default function FeaturedOfferings() {
   const section = home.featuredOfferings;
+  const offerings = getOfferings();
 
   return (
     <section
@@ -41,12 +75,12 @@ export default function FeaturedOfferings() {
         </div>
 
         <div className="mt-16 grid gap-12 md:grid-cols-3 md:gap-8 lg:gap-12">
-          {section.items.map((offering, index) => {
+          {offerings.map((offering, index) => {
             const accent = accents[index % accents.length];
 
             return (
               <article
-                key={offering.title}
+                key={offering.name}
                 className="group flex h-full flex-col text-center"
               >
                 <div className="relative mx-auto aspect-square w-full max-w-[300px]">
@@ -73,52 +107,56 @@ export default function FeaturedOfferings() {
                       [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]
                     "
                   >
-                    <Image
-                      src={offering.image}
-                      alt={offering.imageAlt}
-                      fill
-                      className="
-                        object-cover object-center
-                        transition-transform duration-700 ease-out
-                        group-hover:scale-110
-                      "
-                      sizes="(max-width: 767px) 300px, 33vw"
-                    />
+                    {offering.image && (
+                      <Image
+                        src={offering.image}
+                        alt={offering.name}
+                        fill
+                        className="
+                          object-cover object-center
+                          transition-transform duration-700 ease-out
+                          group-hover:scale-110
+                        "
+                        sizes="(max-width: 767px) 300px, 33vw"
+                      />
+                    )}
                   </div>
                 </div>
 
                 <div className="flex flex-1 flex-col">
                   <h3 className="mt-8 font-serifDisplay text-4xl leading-tight">
-                    {offering.title}
+                    {offering.name}
                   </h3>
 
                   <p className="mx-auto mt-4 max-w-sm leading-7 text-brand-green/70">
                     {offering.description}
                   </p>
 
-                  <div className="mt-auto pt-7">
-                    <Link
-                      href={offering.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="
-                        inline-block
-                        rounded-full bg-brand-coral
-                        px-7 py-3.5
-                        text-sm font-bold uppercase tracking-[0.16em]
-                        text-white
-                        transition-all duration-300 ease-out
-                        hover:-translate-y-2
-                        hover:scale-[1.04]
-                        hover:bg-brand-pink
-                        active:translate-y-[2px]
-                        active:scale-[0.97]
-                        [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]
-                      "
-                    >
-                      {offering.buttonText}
-                    </Link>
-                  </div>
+                  {offering.buttonLink && offering.buttonText && (
+                    <div className="mt-auto pt-7">
+                      <Link
+                        href={offering.buttonLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
+                          inline-block
+                          rounded-full bg-brand-coral
+                          px-7 py-3.5
+                          text-sm font-bold uppercase tracking-[0.16em]
+                          text-white
+                          transition-all duration-300 ease-out
+                          hover:-translate-y-2
+                          hover:scale-[1.04]
+                          hover:bg-brand-pink
+                          active:translate-y-[2px]
+                          active:scale-[0.97]
+                          [transition-timing-function:cubic-bezier(.175,.885,.32,1.275)]
+                        "
+                      >
+                        {offering.buttonText}
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </article>
             );

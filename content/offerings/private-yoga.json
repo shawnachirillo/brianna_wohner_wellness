@@ -4,5 +4,6 @@
   "price": "",
   "image": "/images/blue_portrait.png",
   "buttonText": "Reserve Your Spot",
-  "buttonLink": "https://thrivecart.com/placeholder-private-yoga"
+  "buttonLink": "https://thrivecart.com/placeholder-private-yoga",
+  "order": 3
 }
