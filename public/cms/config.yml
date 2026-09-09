@@ -5,8 +5,8 @@ backend:
   auth_endpoint: oauth/authorize
   auth_token_endpoint: oauth/token
   app_id: Byq4vr2F7BdAJRLc
-  gateway_url: http://localhost:3000/api/cms/git-gateway/github/
-  status_endpoint: http://localhost:3000/api/cms/status
+  gateway_url: https://brianna-wohner-wellness-theta.vercel.app/api/cms/git-gateway/github/
+  status_endpoint: https://brianna-wohner-wellness-theta.vercel.app/api/cms/status
   branch: main
 
 media_folder: "public/uploads"
