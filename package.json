@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/backend": "^3.17.1",
+    "@clerk/nextjs": "^6.39.6",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.116.0",
     "jose": "^6.2.12",

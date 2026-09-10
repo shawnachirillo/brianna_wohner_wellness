@@ -4,7 +4,7 @@ import "./globals.css";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-
+import { ClerkProvider } from "@clerk/nextjs";
 const notoSerifDisplay = Noto_Serif_Display({
   subsets: ["latin"],
   variable: "--font-noto-serif-display",
@@ -34,14 +34,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${notoSerifDisplay.variable} ${openSans.variable} ${dancingScript.variable} font-sans`}
-      >
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
