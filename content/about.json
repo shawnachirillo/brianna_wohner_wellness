@@ -1,16 +1,16 @@
 {
   "hero": {
-    "eyebrow": "Hi, I'm Bri",
+    "eyebrow": "Hi, I'm Bri TEST",
     "heading": "Your new wellness bestie.",
     "intro": "I know what it feels like to be stuck. I've been exactly where you are.",
     "paragraphs": [
       "Battling depression, anxiety, a sugar addiction I couldn't shake, and a body I didn't recognize. I tried everything and nothing worked. Until I stopped dieting and started building a life I actually loved living in.",
-      "I lost 52 pounds, 4 dress sizes, and gained confidence I never knew I had. And I've kept it off for over 15 years. Not through restriction, but through the exact method I now teach."
+      "I lost 52 pounds, 4 dress sizes, and gained confidence I never knew I had. And I've kept it off for over 15 years. Not through restriction, but through the exact method I now teach.",
+      "TEST"
     ],
     "image": "/images/side_portrait.png",
     "imageAlt": "The Goddess Reset"
   },
-
   "transformation": {
     "eyebrow": "My Transformation",
     "heading": "I never ask women to go somewhere I've never been.",
@@ -33,13 +33,11 @@
     "resultHeading": "More importantly...",
     "resultText": "I gained confidence, peace, freedom around food, and a life I genuinely love living."
   },
-
   "method": {
     "eyebrow": "The Modern Goddess Method",
     "heading": "I built this because I needed it to exist.",
     "description": "I'm not a coach who just read a book. I'm a coach who lived it as a mom, a wife, a business owner, with a full life and real responsibilities. Now it's here for you."
   },
-
   "finalSection": {
     "eyebrow": "No more quick-fix lies.",
     "heading": "Natural weight loss without restriction, shame, or starting over every Monday.",
