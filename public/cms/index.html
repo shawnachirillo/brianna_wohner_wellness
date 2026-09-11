@@ -2,11 +2,55 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <meta name="robots" content="noindex" />
-    <title>Goddess Reset Content Manager</title>
+
+    <title>
+      Goddess Reset Content Manager
+    </title>
   </head>
+
   <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <script>
+      const origin = window.location.origin;
+
+      CMS.init({
+        config: {
+          backend: {
+            name: "git-gateway",
+            auth_type: "pkce",
+
+            base_url:
+              "https://crisp-whale-8049.clerk.accounts.dev",
+
+            auth_endpoint:
+              "oauth/authorize",
+
+            auth_token_endpoint:
+              "oauth/token",
+
+            app_id:
+              "Byq4vr2F7BdAJRLc",
+
+            gateway_url:
+              `${origin}/api/cms/git-gateway/github/`,
+
+            status_endpoint:
+              `${origin}/api/cms/status`,
+
+            branch: "main",
+          },
+        },
+      });
+    </script>
   </body>
 </html>

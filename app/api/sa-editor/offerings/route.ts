@@ -1,19 +1,15 @@
 import { NextResponse } from "next/server";
-import { createClerkClient } from "@clerk/backend";
+
 import { getGitHubInstallationToken } from "@/lib/cms/github";
+import { authorizeSAEditorRequest } from "@/lib/sa-editor/authorize";
 
 export const runtime = "nodejs";
+
 export const dynamic = "force-dynamic";
 
 const OWNER = "shawnachirillo";
 const REPO = "brianna_wohner_wellness";
 const BRANCH = "main";
-
-const clerkClient = createClerkClient({
-  secretKey: process.env.CLERK_SECRET_KEY,
-  publishableKey:
-    process.env.CLERK_PUBLISHABLE_KEY,
-});
 
 type OfferingPayload = {
   slug: string;
@@ -26,13 +22,27 @@ type OfferingPayload = {
   order?: number;
 };
 
-async function authorize(request: Request) {
-  const authState =
-    await clerkClient.authenticateRequest(
-      request
-    );
+async function rejectUnauthorized(
+  request: Request
+) {
+  const authorization =
+    await authorizeSAEditorRequest(request);
 
-  return authState.isAuthenticated;
+  if (authorization.authorized) {
+    return null;
+  }
+
+  return NextResponse.json(
+    {
+      error:
+        authorization.status === 401
+          ? "Unauthorized."
+          : "You do not have permission to manage this site.",
+    },
+    {
+      status: authorization.status,
+    }
+  );
 }
 
 async function getHeaders() {
@@ -160,11 +170,11 @@ export async function PUT(
   request: Request
 ) {
   try {
-    if (!(await authorize(request))) {
-      return NextResponse.json(
-        { error: "Unauthorized." },
-        { status: 401 }
-      );
+    const unauthorized =
+      await rejectUnauthorized(request);
+
+    if (unauthorized) {
+      return unauthorized;
     }
 
     const offering =
@@ -213,11 +223,11 @@ export async function POST(
   request: Request
 ) {
   try {
-    if (!(await authorize(request))) {
-      return NextResponse.json(
-        { error: "Unauthorized." },
-        { status: 401 }
-      );
+    const unauthorized =
+      await rejectUnauthorized(request);
+
+    if (unauthorized) {
+      return unauthorized;
     }
 
     const offering =
@@ -266,11 +276,11 @@ export async function DELETE(
   request: Request
 ) {
   try {
-    if (!(await authorize(request))) {
-      return NextResponse.json(
-        { error: "Unauthorized." },
-        { status: 401 }
-      );
+    const unauthorized =
+      await rejectUnauthorized(request);
+
+    if (unauthorized) {
+      return unauthorized;
     }
 
     const { slug, name } =

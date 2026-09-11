@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
+
 import { createClerkClient } from "@clerk/backend";
+
 import { getGitHubInstallationToken } from "@/lib/cms/github";
 
 export const runtime = "nodejs";
+
 export const dynamic = "force-dynamic";
 
 const OWNER = "shawnachirillo";
@@ -16,8 +19,7 @@ const clerkClient = createClerkClient({
 });
 
 type GitHubFileResponse = {
-  content?: string;
-  encoding?: string;
+  download_url?: string | null;
 };
 
 function getContentType(
@@ -111,9 +113,8 @@ export async function GET(
     const githubUrl =
       `https://api.github.com/repos/${OWNER}/${REPO}/contents/${githubPath}?ref=${BRANCH}`;
 
-    const response = await fetch(
-      githubUrl,
-      {
+    const metadataResponse =
+      await fetch(githubUrl, {
         headers: {
           Accept:
             "application/vnd.github+json",
@@ -123,57 +124,85 @@ export async function GET(
             "2022-11-28",
         },
         cache: "no-store",
-      }
-    );
+      });
 
-    if (!response.ok) {
+    if (!metadataResponse.ok) {
       const detail =
-        await response.text();
+        await metadataResponse.text();
 
       console.error(
-        "GitHub media fetch failed:",
-        response.status,
+        "GitHub media metadata fetch failed:",
+        metadataResponse.status,
         detail
       );
 
       return new NextResponse(
         "Image not found.",
         {
-          status: response.status,
+          status:
+            metadataResponse.status,
         }
       );
     }
 
     const file =
-      (await response.json()) as
+      (await metadataResponse.json()) as
         GitHubFileResponse;
 
-    if (
-      file.encoding !== "base64" ||
-      !file.content
-    ) {
+    if (!file.download_url) {
       return new NextResponse(
-        "Invalid image response.",
+        "Image download URL unavailable.",
         {
           status: 500,
         }
       );
     }
 
-    const buffer = Buffer.from(
-      file.content.replace(/\n/g, ""),
-      "base64"
-    );
+    const imageResponse =
+      await fetch(file.download_url, {
+        headers: {
+          Authorization:
+            `Bearer ${token}`,
+        },
+        cache: "no-store",
+      });
 
-    return new NextResponse(buffer, {
-      status: 200,
-      headers: {
-        "Content-Type":
-          getContentType(githubPath),
-        "Cache-Control":
-          "private, max-age=60",
-      },
-    });
+    if (!imageResponse.ok) {
+      const detail =
+        await imageResponse.text();
+
+      console.error(
+        "GitHub raw image fetch failed:",
+        imageResponse.status,
+        detail
+      );
+
+      return new NextResponse(
+        "Could not download image.",
+        {
+          status:
+            imageResponse.status,
+        }
+      );
+    }
+
+    const imageBuffer =
+      await imageResponse.arrayBuffer();
+
+    return new NextResponse(
+      imageBuffer,
+      {
+        status: 200,
+        headers: {
+          "Content-Type":
+            getContentType(
+              githubPath
+            ),
+          "Cache-Control":
+            "private, max-age=60",
+        },
+      }
+    );
   } catch (error) {
     console.error(
       "Media route error:",

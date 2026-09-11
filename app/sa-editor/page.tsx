@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+
 import EditorShell from "@/components/sa-editor/EditorShell";
+
 import home from "@/content/home.json";
 import about from "@/content/about.json";
 import coaching from "@/content/coaching.json";
@@ -19,7 +21,9 @@ export type Offering = {
 };
 
 export type HomeContent = typeof home;
+
 export type AboutContent = typeof about;
+
 export type CoachingContent = typeof coaching;
 
 export type ScheduleEvent = {
@@ -50,6 +54,12 @@ export type EventItem = {
   isPublished: boolean;
 };
 
+function getAllowedUserIds() {
+  return (process.env.SA_EDITOR_ALLOWED_USER_IDS ?? "")
+    .split(",")
+    .map((id) => id.trim())
+    .filter(Boolean);
+}
 
 function getOfferings(): Offering[] {
   const directory = path.join(
@@ -164,8 +174,19 @@ export default async function SAEditorPage() {
     );
   }
 
+  const allowedUserIds =
+    getAllowedUserIds();
+
+  if (
+    allowedUserIds.length === 0 ||
+    !allowedUserIds.includes(userId)
+  ) {
+    redirect("/");
+  }
+
   const offerings = getOfferings();
-  const scheduleEvents = getScheduleEvents();
+  const scheduleEvents =
+    getScheduleEvents();
   const events = getEvents();
 
   return (
