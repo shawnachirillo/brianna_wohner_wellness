@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+
 import coaching from "@/content/coaching.json";
 
 export default function CoachingPage() {
@@ -36,9 +37,13 @@ export default function CoachingPage() {
               </p>
 
               <div className="relative mt-10 grid gap-3 text-lg font-semibold">
-                {coaching.hero.highlights.map((item) => (
-                  <p key={item}>{item}</p>
-                ))}
+                {coaching.hero.highlights.map(
+                  (item) => (
+                    <p key={item}>
+                      {item}
+                    </p>
+                  )
+                )}
               </div>
 
               <Link
@@ -77,21 +82,37 @@ export default function CoachingPage() {
           </h2>
 
           <div className="mt-16 grid gap-6 text-left md:grid-cols-2">
-            {coaching.included.items.map((item) => (
-              <div
-                key={item}
-                className="rounded-[28px] border border-white/15 bg-white/10 p-7"
-              >
-                <p className="text-xl leading-8">✦ {item}</p>
-              </div>
-            ))}
+            {coaching.included.items.map(
+              (item) => (
+                <div
+                  key={item}
+                  className="rounded-[28px] border border-white/15 bg-white/10 p-7"
+                >
+                  <p className="text-xl leading-8">
+                    ✦ {item}
+                  </p>
+                </div>
+              )
+            )}
           </div>
         </div>
       </section>
 
       <section className="px-6 py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
-          <div className="image-card h-[560px] rounded-[42px] shadow-soft" />
+          {coaching.realFix.image ? (
+            <div className="relative h-[560px] overflow-hidden rounded-[42px] shadow-soft">
+              <Image
+                src={coaching.realFix.image}
+                alt={coaching.realFix.heading}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          ) : (
+            <div className="image-card h-[560px] rounded-[42px] shadow-soft" />
+          )}
 
           <div>
             <p className="font-script text-5xl text-brand-pink">
@@ -103,22 +124,29 @@ export default function CoachingPage() {
             </h2>
 
             <div>
-              {coaching.realFix.paragraphs.map((paragraph, index) => (
-                <p
-                  key={paragraph}
-                  className={`text-lg leading-9 text-brand-green/75 ${
-                    index === 0 ? "mt-8" : "mt-6"
-                  }`}
-                >
-                  {paragraph}
-                </p>
-              ))}
+              {coaching.realFix.paragraphs.map(
+                (paragraph, index) => (
+                  <p
+                    key={paragraph}
+                    className={`text-lg leading-9 text-brand-green/75 ${
+                      index === 0
+                        ? "mt-8"
+                        : "mt-6"
+                    }`}
+                  >
+                    {paragraph}
+                  </p>
+                )
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      <section id="apply" className="px-6 pb-28">
+      <section
+        id="apply"
+        className="px-6 pb-28"
+      >
         <div className="mx-auto max-w-5xl rounded-[42px] bg-brand-soft p-10 text-center md:p-16">
           <p className="font-script text-5xl text-brand-coral">
             {coaching.cta.eyebrow}
