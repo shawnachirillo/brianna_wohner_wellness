@@ -1,13 +1,23 @@
 "use client";
 
+import { SignOutButton } from "@clerk/nextjs";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
 import HomeEditor from "@/components/sa-editor/HomeEditor";
 import AboutEditor from "@/components/sa-editor/AboutEditor";
 import ScheduleEditor from "@/components/sa-editor/ScheduleEditor";
 import EventsEditor from "@/components/sa-editor/EventsEditor";
 import CoachingEditor from "@/components/sa-editor/CoachingEditor";
-import type { AboutContent, CoachingContent, EventItem, HomeContent, Offering, ScheduleEvent } from "@/app/sa-editor/page";
+
+import type {
+  AboutContent,
+  CoachingContent,
+  EventItem,
+  HomeContent,
+  Offering,
+  ScheduleEvent,
+} from "@/app/sa-editor/page";
 
 type EditorShellProps = {
   offerings: Offering[];
@@ -47,7 +57,9 @@ function getEditorImageSrc(
   image: string
 ) {
   if (image.startsWith("/uploads/")) {
-    return `/api/sa-editor/media?path=${encodeURIComponent(image)}`;
+    return `/api/sa-editor/media?path=${encodeURIComponent(
+      image
+    )}`;
   }
 
   return image;
@@ -96,7 +108,8 @@ export default function EditorShell({
   const [
     publishStatus,
     setPublishStatus,
-  ] = useState<PublishStatus>("idle");
+  ] =
+    useState<PublishStatus>("idle");
 
   const [
     publishMessage,
@@ -234,6 +247,7 @@ export default function EditorShell({
       setImageUploadStatus(
         "uploading"
       );
+
       setImageUploadMessage(
         "Uploading image..."
       );
@@ -274,18 +288,18 @@ export default function EditorShell({
           }
         );
 
-      // Keep this separate from the
-      // saved /uploads path.
       setImagePreview(dataUrl);
 
       const response = await fetch(
         "/api/sa-editor/uploads",
         {
           method: "POST",
+
           headers: {
             "Content-Type":
               "application/json",
           },
+
           body: JSON.stringify({
             fileName: file.name,
             fileType: file.type,
@@ -304,12 +318,10 @@ export default function EditorShell({
         );
       }
 
-      // GitHub path gets saved here.
-      // Preview remains the local
-      // data URL above.
       setDraft((current) => {
-        if (!current)
+        if (!current) {
           return current;
+        }
 
         return {
           ...current,
@@ -318,6 +330,7 @@ export default function EditorShell({
       });
 
       setImageUploadStatus("idle");
+
       setImageUploadMessage(
         "Image uploaded ✓"
       );
@@ -327,6 +340,7 @@ export default function EditorShell({
       setImagePreview(null);
 
       setImageUploadStatus("error");
+
       setImageUploadMessage(
         "Image upload failed. Please try again."
       );
@@ -340,9 +354,11 @@ export default function EditorShell({
 
     if (!name) {
       setPublishStatus("error");
+
       setPublishMessage(
         "Please enter an offering name."
       );
+
       return;
     }
 
@@ -359,7 +375,9 @@ export default function EditorShell({
 
       const payload: Offering = {
         ...draft,
+
         name,
+
         slug: isNewOffering
           ? makeSlug(name)
           : draft.slug,
@@ -371,10 +389,12 @@ export default function EditorShell({
           method: isNewOffering
             ? "POST"
             : "PUT",
+
           headers: {
             "Content-Type":
               "application/json",
           },
+
           body: JSON.stringify(
             payload
           ),
@@ -397,9 +417,9 @@ export default function EditorShell({
             current.filter(
               (item) =>
                 item.slug !==
-                payload.slug &&
+                  payload.slug &&
                 item.slug !==
-                draft.slug
+                  draft.slug
             );
 
           return [
@@ -414,14 +434,17 @@ export default function EditorShell({
       );
 
       setDraft(payload);
+
       setSelectedOffering(
         payload
       );
+
       setIsNewOffering(false);
 
       await refreshOfferingsFromGitHub();
 
       setPublishStatus("success");
+
       setPublishMessage(
         "Published successfully. Your live site may take 1–3 minutes to update."
       );
@@ -429,6 +452,7 @@ export default function EditorShell({
       console.error(error);
 
       setPublishStatus("error");
+
       setPublishMessage(
         error instanceof Error
           ? error.message
@@ -461,10 +485,12 @@ export default function EditorShell({
         "/api/sa-editor/offerings",
         {
           method: "DELETE",
+
           headers: {
             "Content-Type":
               "application/json",
           },
+
           body: JSON.stringify({
             slug: draft.slug,
             name: draft.name,
@@ -494,6 +520,7 @@ export default function EditorShell({
       closeEditor();
     } catch (error) {
       console.error(error);
+
       setDeleteStatus("error");
     }
   }
@@ -526,12 +553,15 @@ export default function EditorShell({
                 <button
                   key={item}
                   type="button"
+
                   onClick={() => {
                     setActiveSection(
                       item
                     );
+
                     closeEditor();
                   }}
+
                   className={`w-full rounded-xl px-4 py-3 text-left text-sm transition ${
                     activeSection ===
                     item
@@ -546,14 +576,25 @@ export default function EditorShell({
           </nav>
 
           <div className="mt-10 border-t border-black/10 pt-6">
-            <a
-              href="https://brianna-wohner-wellness-theta.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-black/60 hover:text-black"
-            >
-              View live site ↗
-            </a>
+            <div className="flex flex-col items-start gap-4">
+              <a
+                href="https://brianna-wohner-wellness-theta.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-black/60 transition hover:text-black"
+              >
+                View live site ↗
+              </a>
+
+              <SignOutButton redirectUrl="/">
+                <button
+                  type="button"
+                  className="text-sm font-medium text-black/60 transition hover:text-black"
+                >
+                  Sign Out
+                </button>
+              </SignOutButton>
+            </div>
           </div>
         </aside>
 
@@ -570,17 +611,35 @@ export default function EditorShell({
             </div>
 
             {activeSection === "Home" ? (
-              <HomeEditor home={homeContent} />
-            ) : activeSection === "About" ? (
-              <AboutEditor about={aboutContent} />
-            ) : activeSection === "Schedule" ? (
-              <ScheduleEditor initialEvents={scheduleEvents} />
-            ) : activeSection === "Events" ? (
-              <EventsEditor initialEvents={events} />
-            ) : activeSection === "Coaching" ? (
-              <CoachingEditor initialContent={coachingContent} />
+              <HomeEditor
+                home={homeContent}
+              />
             ) : activeSection ===
-            "Offerings" ? (
+              "About" ? (
+              <AboutEditor
+                about={aboutContent}
+              />
+            ) : activeSection ===
+              "Schedule" ? (
+              <ScheduleEditor
+                initialEvents={
+                  scheduleEvents
+                }
+              />
+            ) : activeSection ===
+              "Events" ? (
+              <EventsEditor
+                initialEvents={events}
+              />
+            ) : activeSection ===
+              "Coaching" ? (
+              <CoachingEditor
+                initialContent={
+                  coachingContent
+                }
+              />
+            ) : activeSection ===
+              "Offerings" ? (
               draft ? (
                 <div>
                   <button
@@ -590,8 +649,7 @@ export default function EditorShell({
                     }
                     className="mb-6 text-sm font-medium text-black/50 hover:text-black"
                   >
-                    ← Back to
-                    offerings
+                    ← Back to offerings
                   </button>
 
                   <div className="grid gap-6 lg:grid-cols-2">
@@ -619,6 +677,7 @@ export default function EditorShell({
                             value={
                               draft.name
                             }
+
                             onChange={(
                               e
                             ) =>
@@ -628,6 +687,7 @@ export default function EditorShell({
                                   .value
                               )
                             }
+
                             className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-black/30"
                           />
                         </label>
@@ -639,9 +699,11 @@ export default function EditorShell({
 
                           <textarea
                             rows={5}
+
                             value={
                               draft.description
                             }
+
                             onChange={(
                               e
                             ) =>
@@ -651,6 +713,7 @@ export default function EditorShell({
                                   .value
                               )
                             }
+
                             className="w-full resize-none rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-black/30"
                           />
                         </label>
@@ -666,6 +729,7 @@ export default function EditorShell({
                                 draft.price ??
                                 ""
                               }
+
                               onChange={(
                                 e
                               ) =>
@@ -675,23 +739,25 @@ export default function EditorShell({
                                     .value
                                 )
                               }
+
                               className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-black/30"
                             />
                           </label>
 
                           <label className="block">
                             <span className="mb-2 block text-sm font-medium">
-                              Display
-                              Order
+                              Display Order
                             </span>
 
                             <input
                               type="number"
                               min="1"
+
                               value={
                                 draft.order ??
                                 1
                               }
+
                               onChange={(
                                 e
                               ) =>
@@ -703,6 +769,7 @@ export default function EditorShell({
                                   )
                                 )
                               }
+
                               className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-black/30"
                             />
                           </label>
@@ -721,10 +788,12 @@ export default function EditorShell({
                                     src={
                                       previewImage
                                     }
+
                                     alt={
                                       draft.name ||
                                       "Offering image"
                                     }
+
                                     fill
                                     unoptimized
                                     className="object-cover"
@@ -742,6 +811,7 @@ export default function EditorShell({
 
                                   <button
                                     type="button"
+
                                     onClick={() => {
                                       setImagePreview(
                                         null
@@ -760,17 +830,16 @@ export default function EditorShell({
                                             : current
                                       );
                                     }}
+
                                     className="mt-2 text-xs font-medium text-red-600"
                                   >
-                                    Remove
-                                    image
+                                    Remove image
                                   </button>
                                 </div>
                               </div>
                             ) : (
                               <div className="mb-4 rounded-xl bg-black/[0.03] px-4 py-6 text-center text-sm text-black/35">
-                                No image
-                                selected
+                                No image selected
                               </div>
                             )}
 
@@ -785,10 +854,12 @@ export default function EditorShell({
                               <input
                                 type="file"
                                 accept="image/*"
+
                                 disabled={
                                   imageUploadStatus ===
                                   "uploading"
                                 }
+
                                 onChange={(
                                   e
                                 ) => {
@@ -808,6 +879,7 @@ export default function EditorShell({
                                   e.target.value =
                                     "";
                                 }}
+
                                 className="hidden"
                               />
                             </label>
@@ -839,6 +911,7 @@ export default function EditorShell({
                               draft.buttonText ??
                               ""
                             }
+
                             onChange={(
                               e
                             ) =>
@@ -848,6 +921,7 @@ export default function EditorShell({
                                   .value
                               )
                             }
+
                             className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-black/30"
                           />
                         </label>
@@ -862,6 +936,7 @@ export default function EditorShell({
                               draft.buttonLink ??
                               ""
                             }
+
                             onChange={(
                               e
                             ) =>
@@ -871,6 +946,7 @@ export default function EditorShell({
                                   .value
                               )
                             }
+
                             className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-black/30"
                           />
                         </label>
@@ -878,15 +954,18 @@ export default function EditorShell({
                         <div className="border-t border-black/10 pt-5">
                           <button
                             type="button"
+
                             onClick={
                               publishOffering
                             }
+
                             disabled={
                               publishStatus ===
                                 "publishing" ||
                               imageUploadStatus ===
                                 "uploading"
                             }
+
                             className="w-full rounded-full bg-black px-5 py-3.5 text-sm font-semibold text-white disabled:opacity-40"
                           >
                             {publishStatus ===
@@ -914,13 +993,16 @@ export default function EditorShell({
 
                           <button
                             type="button"
+
                             onClick={
                               deleteOffering
                             }
+
                             disabled={
                               deleteStatus ===
                               "deleting"
                             }
+
                             className="mt-3 w-full rounded-full border border-red-300 px-5 py-3.5 text-sm font-semibold text-red-600"
                           >
                             {isNewOffering
@@ -939,10 +1021,9 @@ export default function EditorShell({
                         <p className="text-sm font-medium">
                           Live Preview
                         </p>
+
                         <p className="mt-1 text-sm text-black/40">
-                          Updates
-                          instantly while
-                          you type.
+                          Updates instantly while you type.
                         </p>
                       </div>
 
@@ -957,10 +1038,12 @@ export default function EditorShell({
                                   src={
                                     previewImage
                                   }
+
                                   alt={
                                     draft.name ||
                                     "Offering image"
                                   }
+
                                   fill
                                   unoptimized
                                   className="object-cover object-center"
@@ -1015,10 +1098,9 @@ export default function EditorShell({
                       <h3 className="text-2xl font-semibold">
                         Offerings
                       </h3>
+
                       <p className="mt-1 text-sm text-black/50">
-                        Edit, reorder,
-                        add, or remove
-                        offerings.
+                        Edit, reorder, add, or remove offerings.
                       </p>
                     </div>
 
@@ -1040,12 +1122,15 @@ export default function EditorShell({
                           key={
                             offering.slug
                           }
+
                           type="button"
+
                           onClick={() =>
                             openOffering(
                               offering
                             )
                           }
+
                           className="flex w-full items-center justify-between rounded-2xl border border-black/10 p-5 text-left"
                         >
                           <div>
@@ -1073,8 +1158,7 @@ export default function EditorShell({
               )
             ) : (
               <div className="rounded-3xl border border-black/10 bg-white p-10 text-center text-black/40">
-                {activeSection} editor
-                coming next.
+                {activeSection} editor coming next.
               </div>
             )}
           </div>
